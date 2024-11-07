@@ -9,7 +9,9 @@ root directory 에서 다음 명령어를 실행하여 모든 서브프로젝트
 각 서비스별로 build 디렉토리가 생성되며, 해당 디렉토리 안에 JAR 파일이 생성됩니다.
 
 # database
-aws instance 사용 이전까지는 local mysql을 사용합니다.  
+aws instance 사용 이전까지는 mysql을 docker에 띄워 사용합니다.  
+init.sql 파일을 이용하여 database와 table을 생성합니다. (docker-compose.yml에서 mount하여 사용)  
+
 database : naezuo  
 username : naezuo_developer  
 password : passw0rd  
