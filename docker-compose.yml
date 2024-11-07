@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:alpine
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: naezuo
+      MYSQL_USER: naezuo_developer
+      MYSQL_PASSWORD: passw0rd
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - naezuo-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-container
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - user-service
+      - goods-service
+      - funding-service
+    networks:
+      - naezuo-network
+
+  user-service:
+    image: naezuo-user-service
+    build:
+      context: ./user-service
+    ports:
+      - "8081:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/naezuo
+      SPRING_DATASOURCE_USERNAME: naezuo_developer
+      SPRING_DATASOURCE_PASSWORD: passw0rd
+    networks:
+      - naezuo-network
+    depends_on:
+      - mysql
+
+  goods-service:
+    image: naezuo-goods-service
+    build:
+      context: ./goods-service
+    ports:
+      - "8082:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/naezuo
+      SPRING_DATASOURCE_USERNAME: naezuo_developer
+      SPRING_DATASOURCE_PASSWORD: passw0rd
+    networks:
+      - naezuo-network
+    depends_on:
+      - mysql
+
+  funding-service:
+    image: naezuo-funding-service
+    build:
+      context: ./funding-service
+    ports:
+      - "8083:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/naezuo
+      SPRING_DATASOURCE_USERNAME: naezuo_developer
+      SPRING_DATASOURCE_PASSWORD: passw0rd
+    networks:
+      - naezuo-network
+    depends_on:
+      - mysql
+
+networks:
+  naezuo-network:
+
+volumes:
+  mysql_data:
