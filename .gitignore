@@ -5,6 +5,7 @@
 build/
 .gradle/
 .idea/
+.Ds_store
 
 # Log file
 *.log
