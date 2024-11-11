@@ -17,9 +17,13 @@ public class GoodsRepositoryImpl implements GoodsRepository {
     public List<Goods> findGoodsING() {
         return jpaGoodsRepository.findGoodsByState(State.ING);
     }
-
     @Override
     public List<Goods> findGoodsEND() {
         return jpaGoodsRepository.findGoodsByState(State.END);
+    }
+
+    @Override
+    public List<Goods> getMyGoods(Long userId) {
+        return jpaGoodsRepository.findGoodsByUserId(userId);
     }
 }

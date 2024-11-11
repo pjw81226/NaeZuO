@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface JpaGoodsRepository extends JpaRepository<Goods, Long> {
     List<Goods> findGoodsByState(State state);
+
+    List<Goods> findGoodsByUserId(Long userId);
 }

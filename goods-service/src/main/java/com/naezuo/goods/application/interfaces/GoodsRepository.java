@@ -8,4 +8,6 @@ public interface GoodsRepository {
     List<Goods> findGoodsING();
 
     List<Goods> findGoodsEND();
+
+    List<Goods> getMyGoods(Long userId);
 }
