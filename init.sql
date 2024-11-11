@@ -1,5 +1,5 @@
 -- 유저 및 권한 설정
-CREATE USER 'naezuo_developer'@'%' IDENTIFIED BY 'passw0rd';
+CREATE USER IF NOT EXISTS 'naezuo_developer'@'%' IDENTIFIED BY 'passw0rd';
 GRANT ALL PRIVILEGES ON *.* TO 'naezuo_developer'@'%' WITH GRANT OPTION;
 
 -- 데이터베이스 생성
