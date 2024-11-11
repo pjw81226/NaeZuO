@@ -17,7 +17,7 @@ init.sql 파일을 이용하여 database와 table을 생성합니다. (docker-co
 database : naezuo  
 username : naezuo_developer  
 password : passw0rd  
-url : jdbc:mysql://mysql:3306/naezuo  
+url : jdbc:mysql://mysql:3306/naezuo -> 로컬에서 디비를 등록할때는 localhost를 호스트로 작성해야함
   
 ### 1. User Table
 
