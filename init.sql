@@ -21,6 +21,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `goods` (
                          `id` bigint NOT NULL AUTO_INCREMENT,
+                         `user_id` bigint NOT NULL,
                          `name` varchar(100) NOT NULL UNIQUE,
                          `cost` bigint NOT NULL,
                          `goal_amount` bigint NOT NULL DEFAULT 0 COMMENT '목표금액',
