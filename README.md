@@ -1,5 +1,7 @@
 # NaeZuO
-E-Commerce Project
+E-Commerce Project  
+MSA... 근데 이제... spring cloud를 곁들이지 않은...  
+나야.. **nginx**
 
 # build the project
 root directory 에서 다음 명령어를 실행하여 모든 서브프로젝트를 빌드합니다
@@ -15,7 +17,7 @@ init.sql 파일을 이용하여 database와 table을 생성합니다. (docker-co
 database : naezuo  
 username : naezuo_developer  
 password : passw0rd  
-url : jdbc:mysql://localhost:3306/naezuo  
+url : jdbc:mysql://mysql:3306/naezuo  
   
 ### 1. User Table
 

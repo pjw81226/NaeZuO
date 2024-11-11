@@ -5,6 +5,8 @@
 build/
 .gradle/
 .idea/
+.Ds_store
+*.properties
 
 # Log file
 *.log
