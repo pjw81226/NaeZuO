@@ -1,5 +1,6 @@
 package com.naezuo.goods.domain;
 
+import com.naezuo.goods.domain.enums.State;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,4 +37,11 @@ public class Goods {
     @Column(name = "total_count", nullable = false)
     private Integer totalCount = 0;
 
+    @Builder.Default
+    @Column(name = "state", nullable = false)
+    private State state = State.ING;
+
+    @Builder.Default
+    @Column(name="image_url", nullable = false)
+    private String imageUrl = "";
 }

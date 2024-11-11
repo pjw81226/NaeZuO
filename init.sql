@@ -21,11 +21,13 @@ CREATE TABLE `user` (
 
 CREATE TABLE `goods` (
                          `id` bigint NOT NULL AUTO_INCREMENT,
-                         `name` varchar(100) NOT NULL,
+                         `name` varchar(100) NOT NULL UNIQUE,
                          `cost` bigint NOT NULL,
                          `goal_amount` bigint NOT NULL DEFAULT 0 COMMENT '목표금액',
                          `total_amount` bigint NOT NULL DEFAULT 0 COMMENT '총 구매금액',
                          `total_count` int NOT NULL DEFAULT 0 COMMENT '총 구매 개수',
+                         `state` enum('ING','END') NOT NULL DEFAULT 'ING' COMMENT '펀딩 진행중 여부',
+                         `image_url` varchar(1024) NOT NULL DEFAULT '' COMMENT '상품 이미지 URL',
                          PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
