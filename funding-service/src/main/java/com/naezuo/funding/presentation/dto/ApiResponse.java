@@ -1,13 +1,16 @@
 package com.naezuo.funding.presentation.dto;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-public record ApiResponse(HttpStatus status, String message, Object data) {
-    public static ApiResponse apiResponse(HttpStatus status, String message, Object data) {
-        return new ApiResponse(status, message, data);
+public record ApiResponse(String message, Object data) {
+
+
+    public static ResponseEntity<ApiResponse> response(HttpStatus status, String message){
+        return ResponseEntity.status(status).body(new ApiResponse(message, null));
     }
 
-    public static ApiResponse apiResponse(HttpStatus status, String message) {
-        return new ApiResponse(status, message, null);
+    public static ResponseEntity<ApiResponse> response(HttpStatus status, String message, Object data){
+        return ResponseEntity.status(status).body(new ApiResponse(message, data));
     }
 }
