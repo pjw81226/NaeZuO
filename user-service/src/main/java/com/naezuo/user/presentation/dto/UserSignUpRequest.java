@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserRequest {
+public class UserSignUpRequest {
     @NotBlank(message = "User ID를 입력하세요")
     private String userId;
 

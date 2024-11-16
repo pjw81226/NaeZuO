@@ -2,7 +2,7 @@ package com.naezuo.goods.presentation.controller;
 
 import com.naezuo.goods.application.service.GoodsService;
 import com.naezuo.goods.presentation.dto.ApiResponse;
-import com.naezuo.goods.presentation.dto.GoodsRequest;
+import com.naezuo.goods.presentation.dto.GoodsRegisterRequest;
 import com.naezuo.goods.presentation.dto.GoodsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,8 +30,8 @@ public class GoodsController {
     }
 
     @PostMapping("")
-    public ResponseEntity<ApiResponse> registerGoods(@RequestBody GoodsRequest goodsRequest){
-        goodsService.saveGoods(goodsRequest);
+    public ResponseEntity<ApiResponse> registerGoods(@RequestBody GoodsRegisterRequest goodsRegisterRequest){
+        goodsService.saveGoods(goodsRegisterRequest);
         return ApiResponse.response(HttpStatus.OK, "상품이 등록되었습니다.");
     }
 }

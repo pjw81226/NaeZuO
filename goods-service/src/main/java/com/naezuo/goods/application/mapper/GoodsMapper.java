@@ -2,7 +2,7 @@ package com.naezuo.goods.application.mapper;
 
 import com.naezuo.goods.domain.Goods;
 import com.naezuo.goods.domain.enums.State;
-import com.naezuo.goods.presentation.dto.GoodsRequest;
+import com.naezuo.goods.presentation.dto.GoodsRegisterRequest;
 import com.naezuo.goods.presentation.dto.GoodsResponse;
 
 public class GoodsMapper {
@@ -18,16 +18,16 @@ public class GoodsMapper {
                 .build();
     }
 
-    public static Goods toDomain(GoodsRequest goodsRequest){
+    public static Goods toDomain(GoodsRegisterRequest goodsRegisterRequest){
         return Goods.builder()
-                .name(goodsRequest.getName())
-                .userId(goodsRequest.getUserId())
-                .cost(goodsRequest.getCost())
-                .goalAmount(goodsRequest.getGoalAmount())
+                .name(goodsRegisterRequest.getName())
+                .userId(goodsRegisterRequest.getUserId())
+                .cost(goodsRegisterRequest.getCost())
+                .goalAmount(goodsRegisterRequest.getGoalAmount())
                 .state(State.ING)
                 .totalAmount((0L))
                 .totalCount(0)
-                .imageUrl(goodsRequest.getImageUrl())
+                .imageUrl(goodsRegisterRequest.getImageUrl())
                 .build();
     }
 }

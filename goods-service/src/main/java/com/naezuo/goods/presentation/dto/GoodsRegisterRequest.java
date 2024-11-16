@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GoodsRequest {
+public class GoodsRegisterRequest {
     @NotBlank(message = "혁준형 user id도 같이 넘겨줘잉 ㅠ") // 쿠키로 넘겨줄거면 수정할 부분
     private Long userId;
 

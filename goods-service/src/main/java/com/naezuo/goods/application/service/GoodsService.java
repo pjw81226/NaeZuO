@@ -2,8 +2,7 @@ package com.naezuo.goods.application.service;
 
 import com.naezuo.goods.application.interfaces.GoodsRepository;
 import com.naezuo.goods.application.mapper.GoodsMapper;
-import com.naezuo.goods.domain.Goods;
-import com.naezuo.goods.presentation.dto.GoodsRequest;
+import com.naezuo.goods.presentation.dto.GoodsRegisterRequest;
 import com.naezuo.goods.presentation.dto.GoodsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -33,7 +32,7 @@ public class GoodsService {
         return goodsRepository.findGoodsEND().stream().map(GoodsMapper::toDto).toList();
     }
 
-    public void saveGoods(GoodsRequest goodsRequest) {
-        goodsRepository.save(GoodsMapper.toDomain(goodsRequest));
+    public void saveGoods(GoodsRegisterRequest goodsRegisterRequest) {
+        goodsRepository.save(GoodsMapper.toDomain(goodsRegisterRequest));
     }
 }
