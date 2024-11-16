@@ -1,18 +1,37 @@
 package com.naezuo.goods.presentation.controller;
 
+import com.naezuo.goods.application.service.GoodsService;
 import com.naezuo.goods.presentation.dto.ApiResponse;
+import com.naezuo.goods.presentation.dto.GoodsRequest;
+import com.naezuo.goods.presentation.dto.GoodsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
 public class GoodsController {
-    @GetMapping("/hi")
-    public ResponseEntity<ApiResponse> sayHi() {
-        return ApiResponse.response(HttpStatus.OK, "hi");
-    }}
+    private final GoodsService goodsService;
+
+    @GetMapping("")
+    public ResponseEntity<ApiResponse> getGoodsList(){
+        return ApiResponse.response(HttpStatus.OK, "goodsList 입니다" ,goodsService.getGoodsING());
+    }
+
+    @GetMapping("")
+    public ResponseEntity<ApiResponse> getGoodsDetail(@RequestParam("goodsId") Long goodsId){
+        Optional<GoodsResponse> goodsResponse = goodsService.getGoodsById(goodsId);
+        return goodsResponse
+                .map(value -> ApiResponse.response(HttpStatus.OK, "해당 상품의 상세정보입니다.", goodsResponse))
+                .orElseGet(() -> ApiResponse.response(HttpStatus.NOT_FOUND, "해당 상품이 존재하지 않습니다."));
+    }
+
+    @PostMapping("")
+    public ResponseEntity<ApiResponse> registerGoods(@RequestBody GoodsRequest goodsRequest){
+        goodsService.saveGoods(goodsRequest);
+        return ApiResponse.response(HttpStatus.CREATED, "상품이 등록되었습니다.");
+    }
+}

@@ -2,11 +2,14 @@ package com.naezuo.goods.application.service;
 
 import com.naezuo.goods.application.interfaces.GoodsRepository;
 import com.naezuo.goods.application.mapper.GoodsMapper;
+import com.naezuo.goods.domain.Goods;
+import com.naezuo.goods.presentation.dto.GoodsRequest;
 import com.naezuo.goods.presentation.dto.GoodsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +25,15 @@ public class GoodsService {
         return goodsRepository.findGoodsING().stream().map(GoodsMapper::toDto).toList();
     }
 
+    public Optional<GoodsResponse> getGoodsById(Long id) {
+        return goodsRepository.getGoodsById(id).map(GoodsMapper::toDto);
+    }
+
     public List<GoodsResponse> getGoodsEND() {
         return goodsRepository.findGoodsEND().stream().map(GoodsMapper::toDto).toList();
+    }
+
+    public void saveGoods(GoodsRequest goodsRequest) {
+        goodsRepository.save(GoodsMapper.toDomain(goodsRequest));
     }
 }
