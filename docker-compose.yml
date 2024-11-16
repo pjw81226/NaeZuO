@@ -43,6 +43,7 @@ services:
       - naezuo-network
 
   user-service:
+    container_name: user-service
     image: naezuo-user-service
     build:
       context: ./user-service
@@ -58,6 +59,7 @@ services:
       - mysql
 
   goods-service:
+    container_name: goods-service
     image: naezuo-goods-service
     build:
       context: ./goods-service
@@ -73,6 +75,7 @@ services:
       - mysql
 
   funding-service:
+    container_name: funding-service
     image: naezuo-funding-service
     build:
       context: ./funding-service

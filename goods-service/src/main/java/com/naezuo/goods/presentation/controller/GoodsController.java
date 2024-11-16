@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 public class GoodsController {
-    @GetMapping("/api/v1/test")
-    public ResponseEntity<?> response() {
-        return ApiResponse.response(HttpStatus.NOT_FOUND, "Not Found");
-    }
-}
+    @GetMapping("/hi")
+    public ResponseEntity<ApiResponse> sayHi() {
+        return ApiResponse.response(HttpStatus.OK, "hi");
+    }}

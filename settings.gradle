@@ -1,2 +1,2 @@
-rootProject.name = 'naezuo'
+rootProject.name = 'NaeZuO'
 include 'user-service', 'goods-service', 'funding-service'
