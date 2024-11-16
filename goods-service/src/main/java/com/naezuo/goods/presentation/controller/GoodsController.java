@@ -32,6 +32,6 @@ public class GoodsController {
     @PostMapping("")
     public ResponseEntity<ApiResponse> registerGoods(@RequestBody GoodsRequest goodsRequest){
         goodsService.saveGoods(goodsRequest);
-        return ApiResponse.response(HttpStatus.CREATED, "상품이 등록되었습니다.");
+        return ApiResponse.response(HttpStatus.OK, "상품이 등록되었습니다.");
     }
 }
