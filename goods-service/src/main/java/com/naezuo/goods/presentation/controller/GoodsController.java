@@ -21,8 +21,8 @@ public class GoodsController {
         return ApiResponse.response(HttpStatus.OK, "goodsList 입니다" ,goodsService.getGoodsING());
     }
 
-    @GetMapping("")
-    public ResponseEntity<ApiResponse> getGoodsDetail(@RequestParam("goodsId") Long goodsId){
+    @GetMapping("/{goodsId}")
+    public ResponseEntity<ApiResponse> getGoodsDetail(@PathVariable("goodsId") Long goodsId){
         Optional<GoodsResponse> goodsResponse = goodsService.getGoodsById(goodsId);
         return goodsResponse
                 .map(value -> ApiResponse.response(HttpStatus.OK, "해당 상품의 상세정보입니다.", goodsResponse))
