@@ -8,6 +8,7 @@ import com.naezuo.goods.presentation.dto.GoodsResponse;
 public class GoodsMapper {
     public static GoodsResponse toDto(Goods domain){
         return GoodsResponse.builder()
+                .id(domain.getId())
                 .name(domain.getName())
                 .cost(domain.getCost())
                 .goalAmount(domain.getGoalAmount())

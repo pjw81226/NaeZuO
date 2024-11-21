@@ -7,6 +7,7 @@ import lombok.Getter;
 @Builder
 @Getter
 public class GoodsResponse {
+    private Long id;
     private String name;
     private Long cost;
     private Long goalAmount;
