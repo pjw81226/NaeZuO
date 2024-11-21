@@ -24,4 +24,7 @@ public class GoodsRegisterRequest {
 
     @NotBlank(message = "상품 설명을 입력하세요")
     private String description;
+
+    @NotBlank(message = "카테고리를 입력하세요")
+    private String category;
 }

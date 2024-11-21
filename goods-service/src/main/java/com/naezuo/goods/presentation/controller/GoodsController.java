@@ -20,9 +20,19 @@ public class GoodsController {
     public ResponseEntity<ApiResponse> test(){
         return ApiResponse.response(HttpStatus.OK, "goods service 정상 작동중입니다." );
     }
-    @GetMapping("/list")
+    @GetMapping("/list-ing")
     public ResponseEntity<ApiResponse> getGoodsList(){
         return ApiResponse.response(HttpStatus.OK, "goodsList 입니다" ,goodsService.getGoodsING());
+    }
+
+    @GetMapping("/list-all")
+    public ResponseEntity<ApiResponse> getGoodsListAll(){
+        return ApiResponse.response(HttpStatus.OK, "goodsList 입니다" ,goodsService.getAllGoods());
+    }
+
+    @GetMapping("list/{userId}")
+    public ResponseEntity<ApiResponse> getGoodsListByUserId(@PathVariable("userId") Long userId){
+        return ApiResponse.response(HttpStatus.OK, "해당 유저의 상품목록입니다.", goodsService.getMyGoods(userId));
     }
 
     @GetMapping("/detail/{goodsId}")

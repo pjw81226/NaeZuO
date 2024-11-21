@@ -16,6 +16,7 @@ public class GoodsMapper {
                 .imageUrl(domain.getImageUrl())
                 .state(domain.getState())
                 .description(domain.getDescription())
+                .category(domain.getCategory())
                 .build();
     }
 
@@ -30,6 +31,7 @@ public class GoodsMapper {
                 .totalCount(0)
                 .imageUrl(goodsRegisterRequest.getImageUrl())
                 .description(goodsRegisterRequest.getDescription())
+                .category(goodsRegisterRequest.getCategory())
                 .build();
     }
 }

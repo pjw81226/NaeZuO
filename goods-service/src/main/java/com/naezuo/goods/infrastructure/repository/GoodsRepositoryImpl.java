@@ -22,6 +22,11 @@ public class GoodsRepositoryImpl implements GoodsRepository {
     public List<Goods> findGoodsEND() {
         return jpaGoodsRepository.findGoodsByState(State.END);
     }
+
+    @Override
+    public List<Goods> getAllGoods(){
+        return jpaGoodsRepository.findAll();
+    }
     @Override
     public Optional<Goods> getGoodsById(Long id) {
         return jpaGoodsRepository.getGoodsById(id);

@@ -30,6 +30,7 @@ CREATE TABLE `goods` (
                          `state` enum('ING','END') NOT NULL DEFAULT 'ING' COMMENT '펀딩 진행중 여부',
                          `image_url` varchar(1024) NOT NULL DEFAULT '' COMMENT '상품 이미지 URL',
                          `description` TEXT NOT NULL COMMENT '상품 설명',
+                         `category` varchar(100) NOT NULL DEFAULT '' COMMENT '상품 카테고리',
                          PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

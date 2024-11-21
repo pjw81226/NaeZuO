@@ -15,4 +15,5 @@ public class GoodsResponse {
     private String imageUrl;
     private State state;
     private String description;
+    private String category;
 }

@@ -20,6 +20,10 @@ public class GoodsService {
         return goodsRepository.getMyGoods(userId).stream().map(GoodsMapper::toDto).toList();
     }
 
+    public List<GoodsResponse> getAllGoods(){
+        return goodsRepository.getAllGoods().stream().map(GoodsMapper::toDto).toList();
+    }
+
     public List<GoodsResponse> getGoodsING() {
         return goodsRepository.findGoodsING().stream().map(GoodsMapper::toDto).toList();
     }

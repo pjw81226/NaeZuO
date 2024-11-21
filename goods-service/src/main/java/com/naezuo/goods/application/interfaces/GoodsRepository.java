@@ -10,6 +10,7 @@ public interface GoodsRepository {
 
     List<Goods> findGoodsEND();
 
+    List<Goods> getAllGoods();
     Optional<Goods> getGoodsById(Long id);
     List<Goods> getMyGoods(Long userId);
 
