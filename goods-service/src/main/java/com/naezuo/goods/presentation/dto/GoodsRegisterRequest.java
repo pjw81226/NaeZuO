@@ -21,4 +21,7 @@ public class GoodsRegisterRequest {
 
     @NotBlank(message = "목표 금액을 입력하세요")
     private Long goalAmount;
+
+    @NotBlank(message = "상품 설명을 입력하세요")
+    private String description;
 }

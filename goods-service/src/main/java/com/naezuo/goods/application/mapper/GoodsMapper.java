@@ -15,6 +15,7 @@ public class GoodsMapper {
                 .totalCount(domain.getTotalCount())
                 .imageUrl(domain.getImageUrl())
                 .state(domain.getState())
+                .description(domain.getDescription())
                 .build();
     }
 
@@ -28,6 +29,7 @@ public class GoodsMapper {
                 .totalAmount((0L))
                 .totalCount(0)
                 .imageUrl(goodsRegisterRequest.getImageUrl())
+                .description(goodsRegisterRequest.getDescription())
                 .build();
     }
 }

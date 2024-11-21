@@ -14,4 +14,5 @@ public class GoodsResponse {
     private Integer totalCount;
     private String imageUrl;
     private State state;
+    private String description;
 }

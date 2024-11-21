@@ -29,6 +29,7 @@ CREATE TABLE `goods` (
                          `total_count` int NOT NULL DEFAULT 0 COMMENT '총 구매 개수',
                          `state` enum('ING','END') NOT NULL DEFAULT 'ING' COMMENT '펀딩 진행중 여부',
                          `image_url` varchar(1024) NOT NULL DEFAULT '' COMMENT '상품 이미지 URL',
+                         `description` TEXT NOT NULL COMMENT '상품 설명',
                          PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -42,3 +43,17 @@ CREATE TABLE `funding` (
                            KEY `user_id` (`user_id`),
                            KEY `goods_id` (`goods_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `user` (`user_id`, `pw`, `age`, `sex`, `name`, `role`)
+VALUES
+    ('user1', 'password1', 25, 'M', 'User One', 'NORMAL'),
+    ('user2', 'password2', 30, 'W', 'User Two', 'NORMAL'),
+    ('influencer1', 'password3', 27, 'W', 'Influencer One', 'INFLUENCER'),
+    ('influencer2', 'password4', 35, 'M', 'Influencer Two', 'INFLUENCER');
+
+INSERT INTO `goods` (`user_id`, `name`, `cost`, `goal_amount`, `total_amount`, `total_count`, `state`, `image_url`, `description`)
+VALUES
+    (1, 'Product A', 10000, 100000, 0, 0, 'ING', 'http://example.com/product_a.jpg', 'This is the description for Product A.'),
+    (2, 'Product B', 20000, 150000, 0, 0, 'ING', 'http://example.com/product_b.jpg', 'This is the description for Product B.'),
+    (3, 'Product C', 5000, 50000, 0, 0, 'ING', 'http://example.com/product_c.jpg', 'This is the description for Product C.'),
+    (4, 'Product D', 30000, 200000, 0, 0, 'ING', 'http://example.com/product_d.jpg', 'This is the description for Product D.');

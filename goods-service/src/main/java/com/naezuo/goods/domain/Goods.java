@@ -47,4 +47,8 @@ public class Goods {
     @Builder.Default
     @Column(name="image_url", nullable = false)
     private String imageUrl = "";
+
+    @Builder.Default
+    @Column(name="description", nullable = false)
+    private String description = "";
 }
