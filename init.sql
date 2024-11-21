@@ -40,7 +40,5 @@ CREATE TABLE `funding` (
                            `count` int NOT NULL DEFAULT 0 COMMENT '구매개수',
                            PRIMARY KEY (`id`),
                            KEY `user_id` (`user_id`),
-                           KEY `goods_id` (`goods_id`),
-                           CONSTRAINT `funding_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-                           CONSTRAINT `funding_ibfk_2` FOREIGN KEY (`goods_id`) REFERENCES `goods` (`id`)
+                           KEY `goods_id` (`goods_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
