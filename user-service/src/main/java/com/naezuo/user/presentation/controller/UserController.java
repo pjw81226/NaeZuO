@@ -14,6 +14,10 @@ import java.util.Optional;
 public class UserController {
     private final UserService userService;
 
+    @GetMapping("")
+    public ResponseEntity<ApiResponse> test(){
+        return ApiResponse.response(HttpStatus.OK, "user service 정상 작동중입니다." );
+    }
     @PostMapping("/signUp")
     public ResponseEntity<ApiResponse> signUp(@RequestBody UserSignUpRequest request){
         userService.signUp(request);

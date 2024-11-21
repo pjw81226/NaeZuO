@@ -17,11 +17,15 @@ public class GoodsController {
     private final GoodsService goodsService;
 
     @GetMapping("")
+    public ResponseEntity<ApiResponse> test(){
+        return ApiResponse.response(HttpStatus.OK, "goods service 정상 작동중입니다." );
+    }
+    @GetMapping("/list")
     public ResponseEntity<ApiResponse> getGoodsList(){
         return ApiResponse.response(HttpStatus.OK, "goodsList 입니다" ,goodsService.getGoodsING());
     }
 
-    @GetMapping("/{goodsId}")
+    @GetMapping("/detail/{goodsId}")
     public ResponseEntity<ApiResponse> getGoodsDetail(@PathVariable("goodsId") Long goodsId){
         Optional<GoodsResponse> goodsResponse = goodsService.getGoodsById(goodsId);
         return goodsResponse
