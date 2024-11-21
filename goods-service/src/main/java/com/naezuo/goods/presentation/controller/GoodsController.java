@@ -29,7 +29,7 @@ public class GoodsController {
                 .orElseGet(() -> ApiResponse.response(HttpStatus.NOT_FOUND, "해당 상품이 존재하지 않습니다."));
     }
 
-    @PostMapping("")
+    @PostMapping("/register")
     public ResponseEntity<ApiResponse> registerGoods(@RequestBody GoodsRegisterRequest goodsRegisterRequest){
         goodsService.saveGoods(goodsRegisterRequest);
         return ApiResponse.response(HttpStatus.OK, "상품이 등록되었습니다.");

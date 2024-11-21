@@ -2,9 +2,7 @@ package com.naezuo.user.application.service;
 
 import com.naezuo.user.application.interfaces.UserRepository;
 import com.naezuo.user.application.mapper.UserMapper;
-import com.naezuo.user.presentation.dto.UserLoginRequest;
-import com.naezuo.user.presentation.dto.UserSignUpRequest;
-import com.naezuo.user.presentation.dto.UserSignUpResponse;
+import com.naezuo.user.presentation.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +17,14 @@ public class UserService {
         userRepository.save(UserMapper.toDomain(userSignUpRequest));
     }
 
-    public Optional<UserSignUpResponse> signIn(UserLoginRequest userLoginRequest){
+    public Optional<UserSignInResponse> signIn(UserLoginRequest userLoginRequest){
         return userRepository.login(userLoginRequest.getUserId(), userLoginRequest.getPw())
                 .map(UserMapper::toResponse);
     }
+
+    public Optional<UserResponse> myPage(UserMyPageRequest userMyPageRequest){
+        return userRepository.findById(userMyPageRequest.getUserId())
+                .map(UserMapper::toUserResponse);
+    }
+
 }

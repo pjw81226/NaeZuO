@@ -7,6 +7,6 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class UserSignUpResponse {
+public class UserSignInResponse {
     private Long id;
 }

@@ -1,8 +1,9 @@
 package com.naezuo.user.application.mapper;
 
 import com.naezuo.user.domain.User;
+import com.naezuo.user.presentation.dto.UserResponse;
 import com.naezuo.user.presentation.dto.UserSignUpRequest;
-import com.naezuo.user.presentation.dto.UserSignUpResponse;
+import com.naezuo.user.presentation.dto.UserSignInResponse;
 
 public class UserMapper {
 
@@ -17,9 +18,21 @@ public class UserMapper {
                 .build();
     }
 
-    public static UserSignUpResponse toResponse(User user) {
-        return UserSignUpResponse.builder()
+    public static UserSignInResponse toResponse(User user) {
+        return UserSignInResponse.builder()
                 .id(user.getId())
+                .build();
+    }
+
+    public static UserResponse toUserResponse(User user){
+        return UserResponse.builder()
+                .id(user.getId())
+                .userId(user.getUserId())
+                .name(user.getName())
+                .age(user.getAge())
+                .pw(user.getPw())
+                .sex(user.getSex())
+                .role(user.getRole())
                 .build();
     }
 }

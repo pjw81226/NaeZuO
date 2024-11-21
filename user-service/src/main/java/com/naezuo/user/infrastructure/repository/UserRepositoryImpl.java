@@ -18,6 +18,10 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public Optional<User> findById(Long userId) {
+        return jpaUserRepository.findById(userId);
+    }
+    @Override
     public Optional<User> login(String userId, String pw) {
         return jpaUserRepository.findByUserIdAndPw(userId, pw);
     }
