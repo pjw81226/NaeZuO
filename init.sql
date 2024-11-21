@@ -58,3 +58,31 @@ VALUES
     (2, 'Product B', 20000, 150000, 0, 0, 'ING', 'http://example.com/product_b.jpg', 'This is the description for Product B.', 'KEYRING'),
     (3, 'Product C', 5000, 50000, 0, 0, 'ING', 'http://example.com/product_c.jpg', 'This is the description for Product C.', 'TUMBLER'),
     (4, 'Product D', 30000, 200000, 0, 0, 'ING', 'http://example.com/product_d.jpg', 'This is the description for Product D.', 'FIGURE');
+
+DELIMITER $$
+
+CREATE TRIGGER trg_funding_after_insert
+    AFTER INSERT ON funding
+    FOR EACH ROW
+BEGIN
+    UPDATE goods
+    SET
+        total_amount = total_amount + NEW.amount,
+        total_count = total_count + NEW.count
+    WHERE id = NEW.goods_id;
+END;
+$$
+
+CREATE TRIGGER trg_funding_after_update
+    AFTER UPDATE ON funding
+    FOR EACH ROW
+BEGIN
+    UPDATE goods
+    SET
+        total_amount = total_amount - OLD.amount + NEW.amount,
+        total_count = total_count - OLD.count + NEW.count
+    WHERE id = NEW.goods_id;
+END;
+$$
+
+DELIMITER ;
