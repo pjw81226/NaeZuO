@@ -41,6 +41,7 @@ public class Goods {
     private Integer totalCount = 0;
 
     @Builder.Default
+    @Enumerated(EnumType.STRING)
     @Column(name = "state", nullable = false)
     private State state = State.ING;
 
