@@ -1,6 +1,7 @@
 package com.naezuo.goods.infrastructure.repository;
 
 import com.naezuo.goods.application.interfaces.GoodsRepository;
+import com.naezuo.goods.domain.EditorFile;
 import com.naezuo.goods.domain.Goods;
 import com.naezuo.goods.domain.enums.State;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class GoodsRepositoryImpl implements GoodsRepository {
     private final JpaGoodsRepository jpaGoodsRepository;
+    private final MongoEditorRepository mongoEditorRepository;
 
     @Override
     public List<Goods> findGoodsING() {
@@ -39,5 +41,15 @@ public class GoodsRepositoryImpl implements GoodsRepository {
     @Override
     public void save(Goods goods) {
         jpaGoodsRepository.save(goods);
+    }
+
+    @Override
+    public void saveEditorFile(EditorFile editorFile) {
+        mongoEditorRepository.save(editorFile);
+    }
+
+    @Override
+    public List<EditorFile> getEditorFileByUserId(String userId) {
+        return mongoEditorRepository.findByUserId(userId);
     }
 }

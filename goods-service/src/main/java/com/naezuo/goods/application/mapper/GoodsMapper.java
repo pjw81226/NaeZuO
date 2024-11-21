@@ -1,7 +1,10 @@
 package com.naezuo.goods.application.mapper;
 
+import com.naezuo.goods.domain.EditorFile;
 import com.naezuo.goods.domain.Goods;
 import com.naezuo.goods.domain.enums.State;
+import com.naezuo.goods.presentation.dto.EditorRequest;
+import com.naezuo.goods.presentation.dto.EditorResponse;
 import com.naezuo.goods.presentation.dto.GoodsRegisterRequest;
 import com.naezuo.goods.presentation.dto.GoodsResponse;
 
@@ -33,6 +36,20 @@ public class GoodsMapper {
                 .imageUrl(goodsRegisterRequest.getImageUrl())
                 .description(goodsRegisterRequest.getDescription())
                 .category(goodsRegisterRequest.getCategory())
+                .build();
+    }
+
+    public static EditorFile toEditorDomain(EditorRequest dto){
+        return EditorFile.builder()
+                .userId(dto.getUserId().toString())
+                .data(dto.getJson())
+                .build();
+    }
+
+    public static EditorResponse toEditorDto(EditorFile domain){
+        return EditorResponse.builder()
+                .userId(Long.valueOf(domain.getUserId()))
+                .json(domain.getData())
                 .build();
     }
 }

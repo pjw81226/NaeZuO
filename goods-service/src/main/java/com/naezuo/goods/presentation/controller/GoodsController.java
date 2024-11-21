@@ -2,6 +2,7 @@ package com.naezuo.goods.presentation.controller;
 
 import com.naezuo.goods.application.service.GoodsService;
 import com.naezuo.goods.presentation.dto.ApiResponse;
+import com.naezuo.goods.presentation.dto.EditorRequest;
 import com.naezuo.goods.presentation.dto.GoodsRegisterRequest;
 import com.naezuo.goods.presentation.dto.GoodsResponse;
 import lombok.RequiredArgsConstructor;
@@ -47,5 +48,16 @@ public class GoodsController {
     public ResponseEntity<ApiResponse> registerGoods(@RequestBody GoodsRegisterRequest goodsRegisterRequest){
         goodsService.saveGoods(goodsRegisterRequest);
         return ApiResponse.response(HttpStatus.OK, "상품이 등록되었습니다.");
+    }
+
+    @PostMapping("/register-editor-file")
+    public ResponseEntity<ApiResponse> registerEditorFile(@RequestBody EditorRequest editorRequest){
+        goodsService.saveEditorFile(editorRequest);
+        return ApiResponse.response(HttpStatus.OK, "에디터 파일이 등록되었습니다.");
+    }
+
+    @GetMapping("/editor-file/{userId}")
+    public ResponseEntity<ApiResponse> getEditorFile(@PathVariable("userId") Long userId){
+        return ApiResponse.response(HttpStatus.OK, "에디터 파일 목록입니다.", goodsService.getEditorFile(userId));
     }
 }

@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public class FundingRepositoryImpl implements FundingRepository {
     private final JpaFundingRepository jpaFundingRepository;
 
+
 }

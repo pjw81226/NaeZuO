@@ -2,6 +2,8 @@ package com.naezuo.goods.application.service;
 
 import com.naezuo.goods.application.interfaces.GoodsRepository;
 import com.naezuo.goods.application.mapper.GoodsMapper;
+import com.naezuo.goods.presentation.dto.EditorRequest;
+import com.naezuo.goods.presentation.dto.EditorResponse;
 import com.naezuo.goods.presentation.dto.GoodsRegisterRequest;
 import com.naezuo.goods.presentation.dto.GoodsResponse;
 import lombok.RequiredArgsConstructor;
@@ -32,11 +34,15 @@ public class GoodsService {
         return goodsRepository.getGoodsById(id).map(GoodsMapper::toDto);
     }
 
-    public List<GoodsResponse> getGoodsEND() {
-        return goodsRepository.findGoodsEND().stream().map(GoodsMapper::toDto).toList();
-    }
-
     public void saveGoods(GoodsRegisterRequest goodsRegisterRequest) {
         goodsRepository.save(GoodsMapper.toDomain(goodsRegisterRequest));
+    }
+
+    public void saveEditorFile(EditorRequest editorRequest) {
+        goodsRepository.saveEditorFile(GoodsMapper.toEditorDomain(editorRequest));
+    }
+
+    public List<EditorResponse> getEditorFile(Long userId) {
+        return goodsRepository.getEditorFileByUserId(userId.toString()).stream().map(GoodsMapper::toEditorDto).toList();
     }
 }

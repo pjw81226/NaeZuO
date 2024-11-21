@@ -1,6 +1,6 @@
 package com.naezuo.funding.presentation.controller;
 
-import com.naezuo.funding.application.FundingService;
+import com.naezuo.funding.application.service.FundingService;
 import com.naezuo.funding.presentation.dto.ApiResponse;
 import com.naezuo.funding.presentation.dto.FundingRequest;
 import com.naezuo.funding.presentation.dto.FundingResponse;
@@ -27,5 +27,10 @@ public class FundingController {
         log.info("post / enter");
         Long fundingId = fundingService.fund(fundingRequest);
         return ApiResponse.response(HttpStatus.OK, "펀딩 성공", new FundingResponse(fundingId));
+    }
+
+    @GetMapping("/my-fundings/{userId}")
+    public ResponseEntity<ApiResponse> getMyFundings(@PathVariable("userId") Long userId) {
+        return ApiResponse.response(HttpStatus.OK, "내 펀딩 목록", fundingService.getMyFundings(userId));
     }
 }

@@ -1,5 +1,6 @@
 package com.naezuo.goods.application.interfaces;
 
+import com.naezuo.goods.domain.EditorFile;
 import com.naezuo.goods.domain.Goods;
 
 import java.util.List;
@@ -13,6 +14,9 @@ public interface GoodsRepository {
     List<Goods> getAllGoods();
     Optional<Goods> getGoodsById(Long id);
     List<Goods> getMyGoods(Long userId);
-
     void save(Goods goods);
+
+    void saveEditorFile(EditorFile editorFile);
+
+    List<EditorFile> getEditorFileByUserId(String userId);
 }
