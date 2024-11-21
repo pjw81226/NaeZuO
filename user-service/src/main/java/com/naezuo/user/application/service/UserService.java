@@ -22,8 +22,8 @@ public class UserService {
                 .map(UserMapper::toResponse);
     }
 
-    public Optional<UserResponse> myPage(UserMyPageRequest userMyPageRequest){
-        return userRepository.findById(userMyPageRequest.getUserId())
+    public Optional<UserResponse> myPage(Long userId){
+        return userRepository.findById(userId)
                 .map(UserMapper::toUserResponse);
     }
 

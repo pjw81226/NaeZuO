@@ -5,9 +5,7 @@ import com.naezuo.user.presentation.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -30,9 +28,9 @@ public class UserController {
                 .orElseGet(() -> ApiResponse.response(HttpStatus.BAD_REQUEST, "로그인 실패"));
     }
 
-    @PostMapping("/my-page")
-    public ResponseEntity<ApiResponse> myPage(@RequestBody UserMyPageRequest userMyPageRequest){
-        Optional<UserResponse> response = userService.myPage(userMyPageRequest);
+    @GetMapping("/{userId}")
+    public ResponseEntity<ApiResponse> myPage(@PathVariable("userId") Long userId){
+        Optional<UserResponse> response = userService.myPage(userId);
         return response
                 .map(userResponse -> ApiResponse.response(HttpStatus.OK, "유저 정보 조회 성공", userResponse))
                 .orElseGet(() -> ApiResponse.response(HttpStatus.BAD_REQUEST, "유저 정보 조회 실패"));
