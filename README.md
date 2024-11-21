@@ -14,6 +14,7 @@ root directory 에서 다음 명령어를 실행하여 모든 서브프로젝트
 도커에 compose up을 할때는 --build 옵션을 넣어야 코드의 변경사항이 반영됩니다.
 ```bash
 docker compose up --build -d
+docker compose down -v
 ```
 
 
