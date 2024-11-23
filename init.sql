@@ -52,13 +52,6 @@ VALUES
     ('influencer1', 'password3', 27, 'W', 'Influencer One', 'INFLUENCER'),
     ('influencer2', 'password4', 35, 'M', 'Influencer Two', 'INFLUENCER');
 
-INSERT INTO `goods` (`user_id`, `name`, `cost`, `goal_amount`, `total_amount`, `total_count`, `state`, `image_url`, `description`, `category`)
-VALUES
-    (1, 'Product A', 10000, 100000, 0, 0, 'ING', 'http://example.com/product_a.jpg', 'This is the description for Product A.', 'CUP'),
-    (2, 'Product B', 20000, 150000, 0, 0, 'ING', 'http://example.com/product_b.jpg', 'This is the description for Product B.', 'KEYRING'),
-    (3, 'Product C', 5000, 50000, 0, 0, 'ING', 'http://example.com/product_c.jpg', 'This is the description for Product C.', 'TUMBLER'),
-    (4, 'Product D', 30000, 200000, 0, 0, 'ING', 'http://example.com/product_d.jpg', 'This is the description for Product D.', 'FIGURE');
-
 DELIMITER $$
 
 CREATE TRIGGER trg_funding_after_insert
