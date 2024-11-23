@@ -21,6 +21,7 @@ public class UserMapper {
     public static UserSignInResponse toResponse(User user) {
         return UserSignInResponse.builder()
                 .id(user.getId())
+                .role(user.getRole())
                 .build();
     }
 
