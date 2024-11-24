@@ -38,17 +38,22 @@ url : jdbc:mysql://mysql:3306/naezuo -> 로컬에서 디비를 등록할때는 l
 | age         | INT             | User's age             |
 | sex         | ENUM('W', 'M')  | User's gender (W: Female, M: Male) |
 | name        | VARCHAR(100)    | User's full name       |
-| role        | ENUM('NORMAL', 'INFLUENCER') | User's role type |
+| role        | ENUM('NORMAL', 'INFLUENCER') | User's role type |\
 
 ### 2. Goods Table
 
-| Column Name   | Data Type          | Description             |
-|---------------|--------------------|-------------------------|
-| id            | INT (PK, AI)       | Primary key, auto-increment |
-| name          | VARCHAR(100)       | Name of the goods       |
-| cost          | DECIMAL(10, 2)     | Cost of the goods       |
-| total_amount  | DECIMAL(15, 2)     | Total purchase amount (총 구매금액) |
-| total_count   | INT                | Total purchase count (총 구매 개수) |
+| Column Name   | Data Type         | Description             |
+|---------------|-------------------|-------------------------|
+| id            | INT (PK, AI)      | Primary key, auto-increment |
+| name          | VARCHAR(100)      | Name of the goods       |
+| cost          | DECIMAL(10, 2)    | Cost of the goods       |
+| total_amount  | DECIMAL(15, 2)    | Total purchase amount (총 구매금액) |
+| total_count   | INT               | Total purchase count (총 구매 개수) |
+| description   | TEXT              | Description of the goods |
+| image_url     | VARCHAR(255)      | Image URL of the goods  |
+| goal_amount   | DECIMAL(15, 2)    | Goal amount (목표 금액) |
+| state         | ENUM('ING','END') | State of the goods |
+| category      | varchar(255)      | Category of the goods |
 
 ### 3. Funding Table
 
@@ -59,3 +64,11 @@ url : jdbc:mysql://mysql:3306/naezuo -> 로컬에서 디비를 등록할때는 l
 | goods_id    | INT (FK)           | References `goods(id)`      |
 | amount      | DECIMAL(15, 2)     | Purchase amount (구매금액)  |
 | count       | INT                | Purchase count (구매개수)   |
+
+
+### 4. Editor-File (MongoDB)
+| Column Name | Data Type | Description                 |
+|-------------|-----------|-----------------------------|
+| id          | ObjectId  | Primary key, auto-increment |
+| user_id     | Long      | References `user(id)`       |
+| JSON        | String    | JSON String                 |
